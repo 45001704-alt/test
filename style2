@@ -1,0 +1,195 @@
+Parfait 😎🔥 on va faire un truc plus stylé :
+
+🌸 Fond rose dégradé moderne
+
+✨ Animations plus fluides
+
+🖼️ Images qui défilent automatiquement (slider CSS)
+
+📂 Menu déroulant amélioré
+
+✅ 1️⃣ Remplace ton HTML par ceci :
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Présentation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Présentation</h1>
+
+<nav>
+    <ul class="menu">
+        <li><a href="#">Articles ▾</a>
+            <ul class="submenu">
+                <li><a href="article1.html">Article 1</a></li>
+                <li><a href="article2.html">Article 2</a></li>
+                <li><a href="article3.html">Article 3</a></li>
+                <li><a href="article4.html">Article 4</a></li>
+            </ul>
+        </li>
+
+        <li><a href="formulaire.html">Formulaire</a></li>
+        <li><a href="tp3.html">TP3</a></li>
+    </ul>
+</nav>
+
+<!-- Slider -->
+<div class="slider">
+    <div class="slides">
+        <img src="https://picsum.photos/800/300?1">
+        <img src="https://picsum.photos/800/300?2">
+        <img src="https://picsum.photos/800/300?3">
+    </div>
+</div>
+
+</body>
+</html>
+
+✅ 2️⃣ Maintenant ton fichier style.css
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Fond rose animé */
+body {
+    height: 100vh;
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #ff758c);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    color: white;
+}
+
+/* Animation du fond */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Titre */
+h1 {
+    margin-bottom: 30px;
+    font-size: 40px;
+    animation: fadeDown 1s ease;
+}
+
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Menu */
+nav {
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    padding: 15px 30px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    background: white;
+    color: #ff4e8b;
+    border-radius: 8px;
+}
+
+/* Sous-menu */
+.submenu {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    list-style: none;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    min-width: 150px;
+}
+
+.submenu li {
+    border-bottom: 1px solid #eee;
+}
+
+.submenu li:last-child {
+    border-bottom: none;
+}
+
+.submenu a {
+    color: #ff4e8b;
+    display: block;
+    padding: 10px;
+}
+
+.submenu a:hover {
+    background: #ffe0eb;
+}
+
+/* Animation menu */
+.menu li:hover .submenu {
+    display: block;
+    animation: slideDown 0.4s ease;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* SLIDER */
+.slider {
+    width: 800px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.slides {
+    display: flex;
+    width: 300%;
+    animation: slide 12s infinite;
+}
+
+.slides img {
+    width: 800px;
+    height: 300px;
+    object-fit: cover;
+}
+
+/* Animation défilement images */
+@keyframes slide {
+    0% { transform: translateX(0); }
+    33% { transform: translateX(-800px); }
+    66% { transform: translateX(-1600px); }
+    100% { transform: translateX(0); }
+}
